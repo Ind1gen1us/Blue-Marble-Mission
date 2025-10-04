@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dla32lxankegi"]
+[gd_scene load_steps=14 format=3 uid="uid://dla32lxankegi"]
 
 [ext_resource type="Script" uid="uid://bupqxvqdwxrem" path="res://scripts/player.gd" id="1_ogems"]
 [ext_resource type="Texture2D" uid="uid://d0een4ekqhrum" path="res://assets/2D_assets/char_16x32 Idle-Sheet.png" id="2_y81qd"]
 [ext_resource type="Texture2D" uid="uid://bvy3o7gtr2npn" path="res://assets/2D_assets/char_16x32 Walk Cycle-Sheet.png" id="3_y81qd"]
+[ext_resource type="AudioStream" uid="uid://bgr7ht5mnkxq1" path="res://assets/music/running-in-grass-6237.mp3" id="4_ddgl3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddgl3"]
 radius = 0.156799
@@ -92,3 +93,9 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_2l5da")
 animation = &"walking"
 autoplay = "idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ddgl3")
+volume_db = 5.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

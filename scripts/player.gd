@@ -2,6 +2,8 @@ extends Area3D
 
 @export var speed = 0.07
 @onready var sprite = $CollisionShape3D/AnimatedSprite3D
+@onready var sound_effect = $AudioStreamPlayer
+
 var path: PathFollow3D
 
 func _ready():
@@ -39,7 +41,14 @@ func _process(delta: float) -> void:
 	
 	# Handle sprite animation and flipping
 	if direction != 0:
+		# Only play sound if it's not already playing
+		if not sound_effect.playing:
+			sound_effect.play()
 		sprite.animation = "walking"
 		sprite.flip_h = direction > 0
 	else:
+		sound_effect.stop()
 		sprite.animation = "idle"
+
+func _on_area_entered(area: Area3D) -> void:
+	print("can detect area")
