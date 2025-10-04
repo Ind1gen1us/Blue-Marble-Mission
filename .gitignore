@@ -1,3 +1,65 @@
-# Godot 4+ specific ignores
-.godot/
+
+# =========================
+# GODOT PROJECT FILES
+# =========================
+.import/                  # Godot import cache (auto-generated)
+.godot/                   # Local editor cache (window layouts, recent files, etc.)
+export.cfg                # Local export config
+export_presets.cfg        # May contain absolute local paths
 /android/
+
+# =========================
+# BUILD / EXPORT OUTPUTS
+# =========================
+*.pck
+*.zip
+*.tar.gz
+*.exe
+*.app
+*.dll
+*.so
+*.dylib
+*.log
+
+# =========================
+# EDITOR / IDE FILES
+# =========================
+.vscode/
+.idea/
+*.swo
+*.swp
+*.tmp
+*.bak
+
+# =========================
+# OS / SYSTEM FILES
+# =========================
+# --- Linux (Fedora, etc.)
+*~
+.cache/
+*.lock
+.nfs*
+
+# --- Windows
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# --- macOS (just in case someone joins later)
+.DS_Store
+
+# =========================
+# PYTHON ENVIRONMENTS (for GDExtensions)
+# =========================
+.venv/
+venv/
+env/
+
+# =========================
+# OPTIONAL ADDONS
+# =========================
+# Keep this commented unless you need to ignore specific local-only addons
+# addons/*/.import/
+# addons/*/test/
+
