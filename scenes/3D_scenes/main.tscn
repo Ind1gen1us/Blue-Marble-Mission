@@ -50,7 +50,7 @@ transform = Transform3D(-0.66367, 0, -0.748019, 0, 1, 0, 0.748019, 0, -0.66367, 
 
 [node name="player" parent="Path3D/PathFollow3D" instance=ExtResource("2_u0o8y")]
 transform = Transform3D(0.813734, 0, -0.581239, 0, 1, 0, 0.581239, 0, 0.813734, 0.210553, 0.192557, -0.156968)
-speed = 0.1
+speed = 1.0
 metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D/player"]
@@ -60,7 +60,7 @@ fov = 37.8493
 script = ExtResource("3_euv8d")
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.663671, 0, -0.748021, 0, 1, 0, 0.748021, 0, -0.663671, 0.243842, 1.78814e-07, 0.167205)
+transform = Transform3D(-0.663671, 0, -0.74802, 0, 1, 0, 0.74802, 0, -0.663671, 0.243842, 1.78814e-07, 0.167205)
 
 [node name="Node3D" parent="Path3D/PathFollow3D2" instance=ExtResource("4_a8q64")]
 transform = Transform3D(-0.663673, 0, 0.748023, 0, 1, 0, -0.748023, 0, -0.663673, -0.380594, 0.768111, -3.42813)

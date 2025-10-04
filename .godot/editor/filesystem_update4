@@ -1,6 +1,8 @@
+res://timeline.dtl
 res://scenes/3D_scenes/main.tscn
 res://scenes/3D_scenes/player.tscn
 res://scripts/player.gd
-res://scripts/camera_3d.gd
-res://scenes/3D_scenes/Lab.tscn
 res://scenes/3D_scenes/lab.tscn
+res://dialogues/bubble style.tres
+res://dialogues/default_style.tres
+res://scripts/scene_manager.gd
