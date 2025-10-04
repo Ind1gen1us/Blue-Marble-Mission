@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamInteractive" load_steps=3 format=3 uid="uid://4watwo436vca"]
+
+[ext_resource type="AudioStream" uid="uid://bu0c173hj2dl4" path="res://assets/music/boost_engine.ogg" id="1_kq2ac"]
+[ext_resource type="AudioStream" uid="uid://bbggrjye40tx" path="res://assets/music/boost_engine_loop.ogg" id="2_vl1bv"]
+
+[resource]
+clip_count = 2
+clip_0/name = &"main"
+clip_0/stream = ExtResource("1_kq2ac")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"loop"
+clip_1/stream = ExtResource("2_vl1bv")
+clip_1/auto_advance = 0

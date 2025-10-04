@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ln1og5xb1qv4"
+path="res://.godot/imported/6 - Orbital Echoes (Loop).ogg-8310f20c4cfb2ec380e1e00d8adf7b39.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/6 - Orbital Echoes (Loop).ogg"
+dest_files=["res://.godot/imported/6 - Orbital Echoes (Loop).ogg-8310f20c4cfb2ec380e1e00d8adf7b39.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

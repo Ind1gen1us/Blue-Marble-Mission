@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamInteractive" load_steps=3 format=3 uid="uid://dsbweo6cgb2dx"]
+
+[ext_resource type="AudioStream" uid="uid://dl1o1mxbc2fw8" path="res://assets/music/normal_engine.ogg" id="1_734jg"]
+[ext_resource type="AudioStream" uid="uid://bt54v8lftuw6u" path="res://assets/music/normal_engine_loop.ogg" id="2_j00wd"]
+
+[resource]
+clip_count = 2
+clip_0/name = &"main"
+clip_0/stream = ExtResource("1_734jg")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"loop"
+clip_1/stream = ExtResource("2_j00wd")
+clip_1/auto_advance = 0

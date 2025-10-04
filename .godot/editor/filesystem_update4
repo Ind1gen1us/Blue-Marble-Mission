@@ -6,3 +6,11 @@ res://scenes/3D_scenes/lab.tscn
 res://dialogues/bubble style.tres
 res://dialogues/default_style.tres
 res://scripts/scene_manager.gd
+res://scenes/3D_scenes/space.tscn
+res://scenes/UI_scene/cockpit.tscn
+res://scripts/cockpit.gd
+res://scenes/3D_scenes/planet.tscn
+res://scripts/planet.gd
+res://scripts/space.gd
+res://scripts/cockpit_camera.gd
+res://scenes/3D_scenes/cp.tscn

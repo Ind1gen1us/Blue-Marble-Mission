@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://crrhq3aia5nq5"]
+
+[ext_resource type="Script" uid="uid://cyhenqhiadssm" path="res://scripts/cockpit_camera.gd" id="1_aw7ho"]
+[ext_resource type="Texture2D" uid="uid://b1ig3x2pmkm7q" path="res://assets/2D_assets/ISS_cockpit-removebg-preview.png" id="1_we4nq"]
+
+[sub_resource type="GDScript" id="GDScript_aw7ho"]
+resource_name = "cockpit"
+script/source = "extends Sprite3D
+
+@export var idle_z: float = -1.8  # Default view showing interior
+@export var moving_z: float = -1.5  # Slightly closer when moving
+@export var boost_z: float = -1.0  # Max close without detaching
+@export var transition_speed: float = 8.0  # How fast it moves
+
+var target_z: float
+var camera: Camera3D
+
+func _ready():
+	camera = get_parent() as Camera3D
+	if not camera:
+		push_error(\"Cockpit sprite must be a child of Camera3D!\")
+	
+	target_z = idle_z
+	position = Vector3(0, 0, idle_z)
+	rotation = Vector3.ZERO
+	scale = Vector3(1, 1, 1)  # Keep scale constant
+
+func _process(delta: float) -> void:
+	var is_boosting = false
+	var is_moving = false
+	
+	if camera and \"velocity\" in camera:
+		var vel_magnitude = camera.velocity.length()
+		is_moving = vel_magnitude > 0.1
+		is_boosting = Input.is_action_pressed(\"boost\") and is_moving
+	
+	# Set target Z based on state
+	if is_boosting:
+		target_z = boost_z
+	elif is_moving:
+		target_z = moving_z
+	else:
+		target_z = idle_z
+	
+	# Smooth transition
+	position.z = lerp(position.z, target_z, transition_speed * delta)
+	
+	# Lock other axes
+	position.x = 0
+	position.y = 0
+	rotation = Vector3.ZERO
+"
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("1_aw7ho")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2)
+cast_shadow = 0
+texture = ExtResource("1_we4nq")
+script = SubResource("GDScript_aw7ho")
+
+[node name="engine_sound" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
