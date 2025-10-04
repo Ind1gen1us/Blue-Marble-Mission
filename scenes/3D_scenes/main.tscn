@@ -1,3 +1,66 @@
-[gd_scene format=3 uid="uid://ccgmhivpoh00t"]
+[gd_scene load_steps=9 format=3 uid="uid://ccgmhivpoh00t"]
+
+[ext_resource type="PackedScene" uid="uid://bo64o1qht70q6" path="res://assets/3D_assets/Low_Poly_Forest.glb" id="1_q1xtn"]
+[ext_resource type="Texture2D" uid="uid://d0een4ekqhrum" path="res://assets/2D_assets/char_16x32 Idle-Sheet.png" id="2_u0o8y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_euv8d"]
+radius = 0.156799
+height = 0.407203
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8q64"]
+atlas = ExtResource("2_u0o8y")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qqiq"]
+atlas = ExtResource("2_u0o8y")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dn13"]
+atlas = ExtResource("2_u0o8y")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omote"]
+atlas = ExtResource("2_u0o8y")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bttgx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8q64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qqiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dn13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omote")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="Low_Poly_Forest" parent="." instance=ExtResource("1_q1xtn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.999934, -0.0108889, -0.00355597, 0.0108218, 0.999773, -0.0183597, 0.0037551, 0.01832, 0.999825, -0.361268, 0.0272738, -0.627198)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(0.867371, -0.162241, -0.470474, 0.142613, 0.986751, -0.077355, 0.476791, 0, 0.879017, -1.46562, 0.157981, -1.41261)
+shape = SubResource("CapsuleShape3D_euv8d")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D/CollisionShape3D"]
+billboard = 1
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_bttgx")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0943771

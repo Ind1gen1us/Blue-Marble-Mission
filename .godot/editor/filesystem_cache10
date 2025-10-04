@@ -11,7 +11,8 @@ THIRDPARTY.md::TextFile/TextFile::-1::1759576555::0::1::::<><><>0<>0<><>::
 ::res://addons/godot-git-plugin/macos/::1759576555
 ::res://addons/godot-git-plugin/win64/::1759576555
 ::res://assets/::1759577261
-::res://assets/2D_assets/::1759579624
+::res://assets/2D_assets/::1759580476
+char_16x32 Idle-Sheet.png::CompressedTexture2D::8922508266170584304::1759580471::1759580596::1::::<><><>0<>0<>6173cfccbc09b8b2e11954c397938284<>res://.godot/imported/char_16x32 Idle-Sheet.png-f6d1bebd2fd34db1df26de0127744a54.s3tc.ctex::
 futuristic_building.png::CompressedTexture2D::1149041086524352186::1759579604::1759579891::1::::<><><>0<>0<>b1be03f0b806678737f2a4b179ed768c<>res://.godot/imported/futuristic_building.png-6c1938bc7dc1f0b183e2235069cb69b4.ctex::
 vecteezy_pixel-art-futuristic-skyscraper-building-icon-illustration_69317942.jpg::CompressedTexture2D/CompressedTexture2D::5781544444279780707::1755355538::1759577917::1::::<><><>0<>0<>820c4aea53875c96fae3ab2db9a0bee6<>res://.godot/imported/vecteezy_pixel-art-futuristic-skyscraper-building-icon-illustration_69317942.jpg-76f0d31abd55ef55c1837011ece69c4c.ctex::
 ::res://assets/2D_assets/Blue/::1724073252
@@ -850,6 +851,7 @@ Low_Poly_Forest.glb::PackedScene/PackedScene::3434847389575003443::1759572280::1
 ::res://assets/music/::1759577261
 ::res://scenes/::1759577230
 ::res://scenes/2D_scenes/::1759577212
-::res://scenes/3D_scenes/::1759577222
+::res://scenes/3D_scenes/::1759580423
+main.tscn::PackedScene::4926346878985396225::1759580423::0::1::::<><><>0<>0<><>::uid://bo64o1qht70q6::::res://assets/3D_assets/Low_Poly_Forest.glb
 ::res://scenes/UI_scene/::1759577230
 ::res://scripts/::1759577013
