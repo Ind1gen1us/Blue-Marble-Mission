@@ -1,1 +1,6 @@
 res://scenes/3D_scenes/main.tscn
+res://scenes/3D_scenes/player.tscn
+res://scripts/player.gd
+res://scripts/camera_3d.gd
+res://scenes/3D_scenes/Lab.tscn
+res://scenes/3D_scenes/lab.tscn

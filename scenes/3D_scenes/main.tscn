@@ -1,66 +1,66 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccgmhivpoh00t"]
 
 [ext_resource type="PackedScene" uid="uid://bo64o1qht70q6" path="res://assets/3D_assets/Low_Poly_Forest.glb" id="1_q1xtn"]
-[ext_resource type="Texture2D" uid="uid://d0een4ekqhrum" path="res://assets/2D_assets/char_16x32 Idle-Sheet.png" id="2_u0o8y"]
+[ext_resource type="PackedScene" uid="uid://dla32lxankegi" path="res://scenes/3D_scenes/player.tscn" id="2_u0o8y"]
+[ext_resource type="Script" uid="uid://c2t4yqxoomcl8" path="res://scripts/camera_3d.gd" id="3_euv8d"]
+[ext_resource type="PackedScene" uid="uid://gh6a17srdj0a" path="res://scenes/3D_scenes/lab.tscn" id="4_a8q64"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_euv8d"]
-radius = 0.156799
-height = 0.407203
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q1xtn"]
+sky_top_color = Color(0.823136, 0.535843, 0.350393, 1)
+sky_horizon_color = Color(0.84441, 0.807513, 0.774122, 1)
+ground_bottom_color = Color(0.0531873, 0.192892, 0.24478, 1)
+ground_horizon_color = Color(0.84441, 0.807513, 0.774122, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8q64"]
-atlas = ExtResource("2_u0o8y")
-region = Rect2(0, 0, 16, 32)
+[sub_resource type="Sky" id="Sky_u0o8y"]
+sky_material = SubResource("ProceduralSkyMaterial_q1xtn")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0qqiq"]
-atlas = ExtResource("2_u0o8y")
-region = Rect2(16, 0, 16, 32)
+[sub_resource type="Environment" id="Environment_euv8d"]
+background_mode = 2
+sky = SubResource("Sky_u0o8y")
+tonemap_mode = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8dn13"]
-atlas = ExtResource("2_u0o8y")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_omote"]
-atlas = ExtResource("2_u0o8y")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bttgx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a8q64")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0qqiq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8dn13")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_omote")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
+[sub_resource type="Curve3D" id="Curve3D_u0o8y"]
+bake_interval = 81.54
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.243842, 1.78814e-07, 0.167205, 0, 0, 0, 0, 0, 0, 0.465254, 1.78814e-07, 0.36365, 0, 0, 0, 0, 0, 0, 0.529933, 1.78814e-07, 0.520614, 0, 0, 0, 0, 0, 0, 0.625514, 1.78814e-07, 0.642027, 0, 0, 0, 0, 0, 0, 1.03109, 1.78814e-07, 0.959768, 0, 0, 0, 0, 0, 0, 1.28638, 1.78814e-07, 0.998824, 0, 0, 0, 0, 0, 0, 1.59974, 1.78814e-07, 1.02895, 0, 0, 0, 0, 0, 0, 1.73232, 1.78814e-07, 1.14044, 0, 0, 0, 0, 0, 0, 2.04997, 1.78814e-07, 1.35999, 0, 0, 0, 0, 0, 0, 2.17954, 1.78814e-07, 1.61008, 0, 0, 0, 0, 0, 0, 2.25185, 1.78814e-07, 1.80895, 0, 0, 0, 0, 0, 0, 2.34526, 1.78814e-07, 1.95056, 0, 0, 0, 0, 0, 0, 2.6334, 1.78814e-07, 2.04071),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+up_vector_enabled = false
 
 [node name="Node3D" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.351842, -0.417668, 0.837712, 0, 0.894934, 0.446198, -0.93606, 0.156991, -0.314875, 0, 0, 0)
+light_energy = 5.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_euv8d")
+
 [node name="Low_Poly_Forest" parent="." instance=ExtResource("1_q1xtn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.915666, 0, -1.51654)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.999934, -0.0108889, -0.00355597, 0.0108218, 0.999773, -0.0183597, 0.0037551, 0.01832, 0.999825, -0.361268, 0.0272738, -0.627198)
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78269, -1.78814e-07, -2.66901)
+curve = SubResource("Curve3D_u0o8y")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(0.867371, -0.162241, -0.470474, 0.142613, 0.986751, -0.077355, 0.476791, 0, 0.879017, -1.46562, 0.157981, -1.41261)
-shape = SubResource("CapsuleShape3D_euv8d")
-metadata/_edit_group_ = true
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.66367, 0, -0.748019, 0, 1, 0, 0.748019, 0, -0.66367, 0.243842, 1.78814e-07, 0.167205)
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D/CollisionShape3D"]
-billboard = 1
-shaded = true
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_bttgx")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.0943771
+[node name="player" parent="Path3D/PathFollow3D" instance=ExtResource("2_u0o8y")]
+transform = Transform3D(0.813734, 0, -0.581239, 0, 1, 0, 0.581239, 0, 0.813734, 0.210553, 0.192557, -0.156968)
+speed = 0.1
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D/player"]
+transform = Transform3D(-0.754701, 0, 0.656075, 0, 1, 0, -0.656075, 0, -0.754701, 0.978394, 0.0237747, -0.713765)
+doppler_tracking = 1
+fov = 37.8493
+script = ExtResource("3_euv8d")
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.663671, 0, -0.748021, 0, 1, 0, 0.748021, 0, -0.663671, 0.243842, 1.78814e-07, 0.167205)
+
+[node name="Node3D" parent="Path3D/PathFollow3D2" instance=ExtResource("4_a8q64")]
+transform = Transform3D(-0.663673, 0, 0.748023, 0, 1, 0, -0.748023, 0, -0.663673, -0.380594, 0.768111, -3.42813)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://gh6a17srdj0a"]
+
+[ext_resource type="Texture2D" uid="uid://qmusk4x7wx5s" path="res://assets/2D_assets/futuristic_building.png" id="1_ud1bb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ud1bb"]
+radius = 0.6
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ud1bb")
+debug_color = Color(0.937933, 0.0951003, 0.571469, 0.42)
+
+[node name="Sprite3D" type="Sprite3D" parent="Area3D/CollisionShape3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+billboard = 1
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_ud1bb")

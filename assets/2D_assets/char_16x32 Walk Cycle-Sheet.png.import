@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qmusk4x7wx5s"
-path.s3tc="res://.godot/imported/futuristic_building.png-6c1938bc7dc1f0b183e2235069cb69b4.s3tc.ctex"
+uid="uid://bvy3o7gtr2npn"
+path="res://.godot/imported/char_16x32 Walk Cycle-Sheet.png-7dfb10686e4e310aab761667dd967fb6.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2D_assets/futuristic_building.png"
-dest_files=["res://.godot/imported/futuristic_building.png-6c1938bc7dc1f0b183e2235069cb69b4.s3tc.ctex"]
+source_file="res://assets/2D_assets/char_16x32 Walk Cycle-Sheet.png"
+dest_files=["res://.godot/imported/char_16x32 Walk Cycle-Sheet.png-7dfb10686e4e310aab761667dd967fb6.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
