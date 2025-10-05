@@ -1,0 +1,5 @@
+[signal]
+Launch spaceship?
+- Yes
+	[signal arg="space"]
+- No

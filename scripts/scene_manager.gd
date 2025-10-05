@@ -4,8 +4,8 @@ extends Node
 const SCENES = {
 	"main_menu": "",
 	"game": "res://scenes/3D_scenes/main.tscn",
-	"lab_interior": "res://scenes/3D_scenes/lab.tscn",
-	"space": "",
+	"lab_interior": "res://scenes/2D_scenes/lab_interior.tscn",
+	"space": "res://scenes/3D_scenes/space.tscn",
 	"pause_menu": "",
 	"game_over": "",
 	"credits": ""

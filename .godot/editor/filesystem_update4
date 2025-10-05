@@ -14,3 +14,14 @@ res://scripts/planet.gd
 res://scripts/space.gd
 res://scripts/cockpit_camera.gd
 res://scenes/3D_scenes/cp.tscn
+res://scenes/2D_scenes/lab_interior.tscn
+res://scenes/2D_scenes/player_2d.tscn
+res://scripts/player_2d.gd
+res://dialogues/training door.dtl
+res://dialogues/space_door.dtl
+res://scenes/UI_scene/earth_closeupl.tscn
+res://scripts/close_view.gd
+res://scenes/UI_scene/location_panel.tscn
+res://scenes/UI_scene/spot_button.tscn
+res://scripts/spot_button.gd
+res://scripts/end_game.gd

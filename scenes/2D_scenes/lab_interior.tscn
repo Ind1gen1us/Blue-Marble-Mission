@@ -1,0 +1,350 @@
+[gd_scene load_steps=19 format=3 uid="uid://bjs31ptah6mkk"]
+
+[ext_resource type="Texture2D" uid="uid://bk87j3h6r86uf" path="res://assets/2D_assets/tilesets/Backgrounds/1038-0.png" id="1_qt680"]
+[ext_resource type="Texture2D" uid="uid://03k1vmulnaoo" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Wall Tiles/Door1Closed_Lab.png" id="2_1kbhn"]
+[ext_resource type="Texture2D" uid="uid://b5hwgu1u500fj" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Floor Tiles/FloorTile1_Lab.png" id="2_ce1u0"]
+[ext_resource type="Texture2D" uid="uid://bfutqf3f73uho" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Wall Tiles/LargePanel2_Lab.png" id="3_7vny3"]
+[ext_resource type="Texture2D" uid="uid://clemvxe70pwru" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Floor Tiles/FloorTile2_Lab.png" id="5_tmn2m"]
+[ext_resource type="Texture2D" uid="uid://doaekre7nrir2" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Floor Tiles/FloorTile3_Lab.png" id="6_luoke"]
+[ext_resource type="Texture2D" uid="uid://mfebba3mo4to" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Floor Tiles/FloorTile4_Lab.png" id="7_1nh4t"]
+[ext_resource type="Texture2D" uid="uid://cdococoub3vgg" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Wall Tiles/Electrical2.png" id="8_chslv"]
+[ext_resource type="Texture2D" uid="uid://cbfmksfpyr6do" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Wall Tiles/Electrical1.png" id="9_m7hka"]
+[ext_resource type="Texture2D" uid="uid://d3ss68p7qwoy4" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Wall Tiles/Vent.png" id="10_va3hv"]
+[ext_resource type="Texture2D" uid="uid://b1cajcsvehbn2" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Wall Tiles/SideDoorOpen.png" id="11_luoke"]
+[ext_resource type="Texture2D" uid="uid://cetu64m12tkgy" path="res://assets/2D_assets/tilesets/2D Sci-Fi Lab Platform Builder/2-PNG Files/Props/LightSmallOff.png" id="12_1nh4t"]
+[ext_resource type="PackedScene" uid="uid://c72op1lq30t8" path="res://scenes/2D_scenes/player_2d.tscn" id="13_1nh4t"]
+[ext_resource type="AudioStream" uid="uid://csnh4kdgop20g" path="res://assets/music/lab_music.mp3" id="14_chslv"]
+
+[sub_resource type="GDScript" id="GDScript_1nh4t"]
+resource_name = "training_door"
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_body_entered(body: Node2D) -> void:
+	Dialogic.start(\"training door\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nh4t"]
+size = Vector2(72.5, 110)
+
+[sub_resource type="GDScript" id="GDScript_chslv"]
+resource_name = "ent_door"
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Dialogic.signal_event.connect(_open)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+func _open(validation):
+	if validation == \"open\":
+		$CollisionShape2D.disabled = false
+
+func _on_body_entered(body: Node2D) -> void:
+	SceneManager.change_scene(\"game\")
+"
+
+[sub_resource type="GDScript" id="GDScript_m7hka"]
+resource_name = "space_door"
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Dialogic.signal_event.connect(_space)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	Dialogic.start(\"space_door\")
+
+func _space(validation):
+	if validation == \"space\":
+		SceneManager.change_scene(\"space\")
+"
+
+[node name="lab_interior" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_qt680")
+metadata/_edit_lock_ = true
+
+[node name="Area2D2" type="Area2D" parent="."]
+script = SubResource("GDScript_1nh4t")
+
+[node name="training_door" type="Sprite2D" parent="Area2D2"]
+position = Vector2(556, 514)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_7vny3")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(560, 554)
+shape = SubResource("RectangleShape2D_1nh4t")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = SubResource("GDScript_chslv")
+
+[node name="entrance_door" type="Sprite2D" parent="Area2D"]
+position = Vector2(1075, 544)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_1kbhn")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1073, 554)
+shape = SubResource("RectangleShape2D_1nh4t")
+disabled = true
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("13_1nh4t")]
+position = Vector2(1088, 554)
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1149, 621, 1152, 664, -10, 664, -3, 618, 1, 466, 98, 468, 101, 516, 149, 516, 154, 568, 203, 568, 202, 615)
+metadata/_edit_lock_ = true
+
+[node name="FloorTile1Lab" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1128, 643)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ce1u0")
+
+[node name="FloorTile1Lab2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1077, 643)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ce1u0")
+
+[node name="FloorTile1Lab3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1026, 643)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ce1u0")
+
+[node name="FloorTile2Lab" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(975, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmn2m")
+
+[node name="FloorTile2Lab2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(924, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmn2m")
+
+[node name="FloorTile2Lab3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(874, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmn2m")
+
+[node name="FloorTile3Lab" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(824, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_luoke")
+
+[node name="FloorTile3Lab2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(267, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_luoke")
+
+[node name="FloorTile2Lab4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(773, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmn2m")
+
+[node name="FloorTile2Lab5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(723, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmn2m")
+
+[node name="FloorTile2Lab6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(672, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmn2m")
+
+[node name="FloorTile2Lab7" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(417.6, 641.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmn2m")
+
+[node name="FloorTile2Lab8" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(367.6, 641.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmn2m")
+
+[node name="FloorTile2Lab9" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(316.6, 641.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tmn2m")
+
+[node name="FloorTile4Lab" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(621, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(570, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(519, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(468, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(216.6, 641.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(165.6, 641.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab7" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(114.6, 641.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab8" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(63.6, 641.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab21" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(14, 642)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab10" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(127.6, 591.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab11" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(76.6, 591.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab12" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(25.6, 591.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab14" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(77, 541)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab15" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(26, 542)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="FloorTile4Lab18" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(26, 491)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_1nh4t")
+
+[node name="Electrical2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(749, 412)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_chslv")
+
+[node name="Electrical1" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(392, 467)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_m7hka")
+
+[node name="Vent" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(328, 332)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_va3hv")
+
+[node name="Vent2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(472, 334)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_va3hv")
+
+[node name="Vent3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(678, 334)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_va3hv")
+
+[node name="Vent4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(825, 336)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_va3hv")
+
+[node name="FloorTile1Lab4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(178, 591)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ce1u0")
+
+[node name="FloorTile1Lab5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(127, 541)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ce1u0")
+
+[node name="FloorTile1Lab6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(76, 491)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ce1u0")
+
+[node name="LightSmallOff" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(171, 167)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_1nh4t")
+
+[node name="LightSmallOff2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(982, 333)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_1nh4t")
+
+[node name="Area2D3" type="Area2D" parent="."]
+script = SubResource("GDScript_m7hka")
+metadata/_edit_lock_ = true
+
+[node name="SideDoorOpen" type="Sprite2D" parent="Area2D3"]
+position = Vector2(60, 340)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_luoke")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(40.75, 407)
+shape = SubResource("RectangleShape2D_1nh4t")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_chslv")
+autoplay = true
+
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_body_entered"]

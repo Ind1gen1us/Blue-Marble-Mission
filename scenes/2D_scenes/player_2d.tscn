@@ -1,0 +1,160 @@
+[gd_scene load_steps=19 format=3 uid="uid://c72op1lq30t8"]
+
+[ext_resource type="Texture2D" uid="uid://d0een4ekqhrum" path="res://assets/2D_assets/char_16x32 Idle-Sheet.png" id="1_b3tvl"]
+[ext_resource type="Script" uid="uid://5dxlqe51i612" path="res://scripts/player_2d.gd" id="1_barxs"]
+[ext_resource type="Texture2D" uid="uid://bvy3o7gtr2npn" path="res://assets/2D_assets/char_16x32 Walk Cycle-Sheet.png" id="2_mku47"]
+[ext_resource type="AudioStream" uid="uid://qa2imth7u6l0" path="res://assets/music/398937__softdistortionfx__metal-footsteps.ogg" id="4_ll0o7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mku47"]
+atlas = ExtResource("1_b3tvl")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_barxs"]
+atlas = ExtResource("1_b3tvl")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll0o7"]
+atlas = ExtResource("1_b3tvl")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv2f5"]
+atlas = ExtResource("1_b3tvl")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of71b"]
+atlas = ExtResource("1_b3tvl")
+region = Rect2(0, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtkgk"]
+atlas = ExtResource("1_b3tvl")
+region = Rect2(16, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4gra"]
+atlas = ExtResource("1_b3tvl")
+region = Rect2(32, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlrxh"]
+atlas = ExtResource("1_b3tvl")
+region = Rect2(48, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmbm3"]
+atlas = ExtResource("2_mku47")
+region = Rect2(0, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gl15"]
+atlas = ExtResource("2_mku47")
+region = Rect2(16, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydpi6"]
+atlas = ExtResource("2_mku47")
+region = Rect2(48, 64, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7yo4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mku47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_barxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll0o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv2f5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of71b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtkgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4gra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlrxh")
+}],
+"loop": true,
+"name": &"idle_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmbm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gl15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydpi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmbm3")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_of71b"]
+height = 58.28
+
+[sub_resource type="GDScript" id="GDScript_barxs"]
+resource_name = "follow_2d_player_cam"
+script/source = "extends Camera2D
+
+@export var follow_speed: float = 5.0  # Adjust for smoothness (lower = smoother/laggier)
+@export var look_ahead_distance: float = 50.0  # How far ahead to look based on direction
+
+var player: CharacterBody2D
+
+func _ready():
+	player = get_parent() as CharacterBody2D
+
+func _process(delta: float) -> void:
+	if not player:
+		return
+	
+	# Calculate target position with look-ahead
+	var target_position = player.global_position
+	
+	# Add look-ahead based on player velocity
+	if player.velocity.x != 0:
+		target_position.x += sign(player.velocity.x) * look_ahead_distance
+	
+	# Smooth follow
+	global_position = global_position.lerp(target_position, follow_speed * delta)
+"
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_barxs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_7yo4t")
+animation = &"walking"
+autoplay = "idle"
+frame_progress = 0.232011
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32)
+shape = SubResource("CapsuleShape2D_of71b")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.7, 1.7)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
+limit_smoothed = true
+script = SubResource("GDScript_barxs")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ll0o7")

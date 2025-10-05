@@ -1,0 +1,4 @@
+[signal arg="input"]
+Press E to enter the buoyancy zone
+[signal arg="open"]
+[end_timeline]

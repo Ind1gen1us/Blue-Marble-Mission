@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8rx7uyryop6m"]
+
+[sub_resource type="GDScript" id="GDScript_i5hvi"]
+resource_name = "info_panel"
+script/source = "extends PanelContainer
+
+@onready var image: TextureRect = $MarginContainer/VBoxContainer/TextureRect
+@onready var location: Label = $MarginContainer/VBoxContainer/Label
+@onready var description: RichTextLabel = $MarginContainer/VBoxContainer/RichTextLabel
+
+func  _ready() -> void:
+	
+
+func setup(settings: Array) -> void:
+	image.texture = load(settings[0])
+	location.text = settings[1]
+	description.text = settings[2]  
+"
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 250)
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_i5hvi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Location_name"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "afafalanfkalflkaalfkafkalfnakfalnfdlanskfdaflnaklfnlnalfnlfoafnlkalkfnalfnlafnlanflkkdlafnalnfllanflaflalfnalkfd."
+fit_content = true
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Take picture"

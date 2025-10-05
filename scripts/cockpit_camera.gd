@@ -80,8 +80,9 @@ func _process(delta: float) -> void:
 
 	# --- Handle engine sound ---
 	if input_vector.length() > 0:
-		var desired_track ="res://assets/music/boost_engine_track.tres" if is_boosting else "res://assets/music/normal_engine_track.tres"
-		if sound.stream.resource_path != desired_track or not sound.playing:
+		var desired_track = "res://assets/music/boost_engine_track.tres" if is_boosting else "res://assets/music/normal_engine_track.tres"
+		
+		if sound.stream == null or sound.stream.resource_path != desired_track or not sound.playing:
 			sound.stream = load(desired_track)
 			sound.play()
 	else:

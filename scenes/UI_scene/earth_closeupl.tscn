@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://pvhy5aplcr8w"]
+
+[ext_resource type="Texture2D" uid="uid://ct3ucspp3lps5" path="res://assets/2D_assets/earth_close.jpg" id="1_a0jxt"]
+[ext_resource type="PackedScene" uid="uid://crbjvsvy50t3u" path="res://scenes/UI_scene/spot_button.tscn" id="2_a0jxt"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_a0jxt")
+metadata/_edit_lock_ = true
+
+[node name="instructions" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="florida" parent="." instance=ExtResource("2_a0jxt")]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 519.0
+offset_right = 571.0
+offset_bottom = 550.0
+image_path = "res://sts091-718-037~medium.jpg"
+location_name = "southeastern Massachusetts"
+location_description = "STS091-718-037 (2-12 June 1998)--- This photo taken from the aft flight deck of the Earth-orbiting Space Shuttle Discovery features Cape Cod, an easily recognizable hook-shaped peninsula in southeastern Massachusetts. Sandy and of glacial origin, it extends 65 miles (105 km) into the Atlantic Ocean, has a varying breadth of 1 to 20 miles (1.6-32 km), and is bounded by Cape Cod Bay (north and west), Buzzards Bay (west), and Vineyard and Nantucket sounds (south)"

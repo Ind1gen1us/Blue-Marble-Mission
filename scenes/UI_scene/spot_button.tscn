@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://crbjvsvy50t3u"]
+
+[ext_resource type="Script" uid="uid://dpb0ffpqslo5h" path="res://scripts/spot_button.gd" id="1_ywf1e"]
+
+[node name="Button" type="Button"]
+offset_left = 165.0
+offset_top = 257.0
+offset_right = 182.0
+offset_bottom = 288.0
+text = "L"
+script = ExtResource("1_ywf1e")

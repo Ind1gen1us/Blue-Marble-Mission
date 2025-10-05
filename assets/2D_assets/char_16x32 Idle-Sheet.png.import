@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0een4ekqhrum"
-path.s3tc="res://.godot/imported/char_16x32 Idle-Sheet.png-f6d1bebd2fd34db1df26de0127744a54.s3tc.ctex"
+path="res://.godot/imported/char_16x32 Idle-Sheet.png-f6d1bebd2fd34db1df26de0127744a54.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/2D_assets/char_16x32 Idle-Sheet.png"
-dest_files=["res://.godot/imported/char_16x32 Idle-Sheet.png-f6d1bebd2fd34db1df26de0127744a54.s3tc.ctex"]
+dest_files=["res://.godot/imported/char_16x32 Idle-Sheet.png-f6d1bebd2fd34db1df26de0127744a54.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
